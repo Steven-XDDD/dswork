@@ -120,6 +120,8 @@ int BinaryTree::release(BTNode *_x) {
 	if(_x != NULL) {
 		release(_x->left);
 		release(_x->right);
+		_x->parent = NULL;
+		_x->data = 0;
 		delete _x;
 	}
 	return 0;
@@ -155,6 +157,7 @@ public:
 	int insert(Node *_new);
 	int insert(const Node *_new);
 	int insert(TYPE _val);
+	int del(Node *_x);
 };
 
 typedef BinarySearchTree::Node BSTNode;
@@ -398,8 +401,34 @@ int BinarySearchTree::insert(BSTNode *_new) {
 		y->left = _new;
 	}
 	return 0;
-}	
-	
+};	
+
+int BinarySearchTree::del(BSTNode *_x) {
+	if(_x->left == NULL && _x->right == NULL) {
+		transplant(_x,NULL);
+	}
+	else if(_x->left == NULL && _x->right != NULL) {
+		transplant(_x,_x->left);
+	}
+	else if(_x->left != NULL && _x->right == NULL) {
+		transplant(_x, _x->right);
+	}
+	else {
+		BSTNode *y = successor(_x);
+		if(y->parent != _x) {
+			transplant(y, y->right); 
+			y->right = _x->right;
+			y->right->parent = y;
+		}
+		else {
+			y->left = _x->left;
+			y->left->parent = y;
+		}
+	}
+	_x->left = _x->right = _x->parent = NULL;
+	_x->data = 0;
+	delete _x;
+};
 
 int BinarySearchTree::insert(const BSTNode *_new) {
 	BSTNode *x = getroot();
