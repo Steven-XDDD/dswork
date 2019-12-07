@@ -60,7 +60,7 @@ public:
 	root = nil;
 	};
 
-	BinaryTree(TYPE _new);
+	BinaryTree(TYPE _x, TYPE _y);
 
 	~BinaryTree();
 
@@ -90,9 +90,9 @@ public:
 
 	int updateDepthandPos(Node *_x, int _d, int _p);
 
-	int insertLeft(Node *_x, TYPE _val);
+	int insertLeft(Node *_x, TYPE _l, TYPE _h);
 
-	int insertRight(Node *_x, TYPE _val);
+	int insertRight(Node *_x, TYPE _l, TYPE _h);
 
 	int RightRotate(Node *_x);
 

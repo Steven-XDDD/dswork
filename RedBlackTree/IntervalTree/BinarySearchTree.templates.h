@@ -374,10 +374,10 @@ int BinarySearchTree<TYPE>::insert(Node *_new) {
 };
 
 template <class TYPE>
-int BinarySearchTree<TYPE>::insert(TYPE _d) {
+int BinarySearchTree<TYPE>::insert(TYPE _l, TYPE _h) {
 	Node *x = this->root;
 	Node *y = this->nil;
-	Node *z = new Node(_d);
+	Node *z = new Node(_l, _h);
 	z->left = z->right = this->nil;
 	while(x != this->nil) {
 		y = x;

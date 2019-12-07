@@ -21,7 +21,7 @@ class BinarySearchTree : public BinaryTree<TYPE>
 public:
 	typedef typename BinaryTree<TYPE>::Node Node;
 
-	BinarySearchTree(TYPE _val) : BinaryTree<TYPE>(_val) {};
+	BinarySearchTree(TYPE _l, TYPE _h) : BinaryTree<TYPE>(_l, _h) {};
 
 	BinarySearchTree(){};
 
@@ -67,7 +67,7 @@ public:
 
 	int insert(Node *_new);
 
-	int insert(TYPE _d);
+	int insert(TYPE _l, TYPE _h);
 
 	int del(Node *_x);
 };

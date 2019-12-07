@@ -17,11 +17,13 @@ const typename BinaryTree<TYPE>::Node* BinaryTree<TYPE>::getRoot() const {
 };
 
 template <class TYPE>
-BinaryTree<TYPE>::BinaryTree(TYPE _new) {
+BinaryTree<TYPE>::BinaryTree(TYPE _x, TYPE _y) {
 	nil = new Node;
 	nil->color = BLACK;
 	Node *r = new Node;
-	r->data = _new;
+	r->data = _x;
+	r->low = _x;
+	r->high = r->max = _y;
 	r->left = nil;
 	r->right = nil;
 	r->parent = nil;
@@ -292,7 +294,7 @@ BinaryTree<TYPE>::~BinaryTree() {
 };
 
 template <class TYPE>
-int BinaryTree<TYPE>::insertLeft(Node *_x, TYPE _val) {
+int BinaryTree<TYPE>::insertLeft(Node *_x, TYPE _l, TYPE _h) {
 	if(_x == nil) {
 		std::cerr << "Error! The tree is empty." << std::endl;
 		return -1;
@@ -303,7 +305,9 @@ int BinaryTree<TYPE>::insertLeft(Node *_x, TYPE _val) {
 	}
 	Node *t = new Node;
 	t->parent = _x;
-	t->data = _val;
+	t->data = _l;
+	t->low = _l;
+	t->high = t->max = _h;
 	t->left = nil;
 	t->right = nil;
 	_x->left = t;
@@ -311,7 +315,7 @@ int BinaryTree<TYPE>::insertLeft(Node *_x, TYPE _val) {
 };
 
 template <class TYPE>
-int BinaryTree<TYPE>::insertRight(Node *_x, TYPE _val) {
+int BinaryTree<TYPE>::insertRight(Node *_x, TYPE _l, TYPE _h) {
 	if(_x == nil) {
 		std::cerr << "Error! The tree is empty." << std::endl;
 		return -1;
@@ -322,7 +326,9 @@ int BinaryTree<TYPE>::insertRight(Node *_x, TYPE _val) {
 	}
 	Node *t = new Node;
 	t->parent = _x;
-	t->data = _val;
+	t->data = _l;
+	t->low = _l;
+	t->high = t->max = _h;
 	t->left = nil;
 	t->right = nil;
 	_x->right = t;

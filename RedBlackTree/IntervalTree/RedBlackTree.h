@@ -11,7 +11,7 @@ class RedBlackTree : public BinarySearchTree<TYPE> {
 public:
 	typedef typename BinarySearchTree<TYPE>::Node Node;
 
-	RedBlackTree(TYPE _val) : BinarySearchTree<TYPE>(_val) {
+	RedBlackTree(TYPE _l, TYPE _h) : BinarySearchTree<TYPE>(_l, _h) {
 		this->root->color = BLACK;
 	};
 
@@ -19,7 +19,7 @@ public:
 
 	int insert(Node *_new);
 
-	int insert(TYPE _d);
+	int insert(TYPE _l, TYPE _h);
 
 	int del(Node *_x);
 };

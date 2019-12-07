@@ -33,7 +33,7 @@ int IntervalTree<TYPE>::RightRotate(Node *_x) {
 	}
 	y->right = _x;
 	_x->parent = y;
-	return 0
+	return 0;
 };
 
 
@@ -80,7 +80,7 @@ int IntervalTree<TYPE>::insert(Node *_new) {
 	BinarySearchTree<TYPE>::insert(x);
 	if(x->parent->color == BLACK) {
 		this->root->color = BLACK;
-		IT_Max_Fixup(x);
+		__IT_Max_Fixup(x);
 		return 0;
 	}
 	while(x->parent->color == RED) {
@@ -137,7 +137,7 @@ int IntervalTree<TYPE>::insert(Node *_new) {
 			}
 		}
 	}
-	IT_Max_Fixup(x);
+	__IT_Max_Fixup(x);
 	this->root->color == BLACK;
 	return 0;
 }; 
@@ -239,7 +239,7 @@ int IntervalTree<TYPE>::del(Node *_x) {
 				if(w->right->color == BLACK && w->left->color == BLACK) {
 					w->color = RED;											//case2
 					if(x->parent->max < x->max) {
-						x->parent->max = x->max								//case2 fix the max
+						x->parent->max = x->max;								//case2 fix the max
 					}
 					x = x->parent;											//case2
 				}
@@ -269,7 +269,7 @@ int IntervalTree<TYPE>::del(Node *_x) {
 }
 
 template <class TYPE>
-Node *IntervalTree<TYPE>::IntervalSearch(TYPE _x, TYPE _y) {
+typename IntervalTree<TYPE>::Node *IntervalTree<TYPE>::IntervalSearch(TYPE _x, TYPE _y) {
 	Node *x = this->root;
 	while(x != this->nil && _x > x->high || x != this->nil && _y < x->low) {
 		if(x->left != this->nil && x->left->max >= _x) {
@@ -291,7 +291,7 @@ int IntervalTree<TYPE>::__IT_Max_Fixup(Node *_x) {
 		else {
 			break;
 		}
-		_x->_x->parent;
+		_x = _x->parent;
 	}
 	return 0;
 };

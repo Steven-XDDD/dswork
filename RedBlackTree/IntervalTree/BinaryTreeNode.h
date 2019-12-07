@@ -46,7 +46,7 @@ public:
 
 	BinaryTreeNode(BinaryTreeNode *_t);
 
-	BinaryTreeNode(TYPE _d);
+	BinaryTreeNode(TYPE _x, TYPE _y);
 
 	~BinaryTreeNode();
 };

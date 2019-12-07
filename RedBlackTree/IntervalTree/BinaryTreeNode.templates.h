@@ -7,6 +7,9 @@ BinaryTreeNode<TYPE>::BinaryTreeNode(const BinaryTreeNode *_t) {
 		std::exit(-1);
 	}
 	data = _t->data;
+	max = _t->max;
+	low = _t->low;
+	high = _t->high;
 	parent = left = right = NULL;
 };
 
@@ -17,12 +20,18 @@ BinaryTreeNode<TYPE>::BinaryTreeNode(BinaryTreeNode *_t) {
 		std::exit(-1);
 	}
 	data = _t->data;
+	max = _t->max;
+	low = _t->low;
+	high = _t->high;
 	parent = left = right = NULL;
 };
 
 template <class TYPE>
-BinaryTreeNode<TYPE>::BinaryTreeNode(TYPE _d) {
-	data = _d;
+BinaryTreeNode<TYPE>::BinaryTreeNode(TYPE _x, TYPE _y) {
+	data = _x;
+	low = _x;
+	high = _y;
+	max = _y;
 	parent = left = right = NULL;
 };
 

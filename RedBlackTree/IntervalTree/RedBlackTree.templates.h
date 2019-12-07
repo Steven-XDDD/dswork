@@ -58,8 +58,8 @@ int RedBlackTree<TYPE>::insert(Node *_new) {
 }; 
 
 template <class TYPE>
-int RedBlackTree<TYPE>::insert(TYPE _d) {
-	Node *t = new Node(_d);
+int RedBlackTree<TYPE>::insert(TYPE _l, TYPE _h) {
+	Node *t = new Node(_l, _h);
 	insert(t);
 	return 0;
 };

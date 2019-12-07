@@ -8,9 +8,8 @@ class IntervalTree : public RedBlackTree<TYPE>{
 public:
 	typedef typename RedBlackTree<TYPE>::Node Node;
 
-	IntervalTree(TYPE _x, TYPE _y) : RedBlackTree<TYPE>(_x) {
-		this->root->high = _y;
-		this->root->low = data;
+
+	IntervalTree(TYPE _x, TYPE _y) : RedBlackTree<TYPE>(_x, _y) {
 		this->root->max = _y;
 	};
 
@@ -73,7 +72,7 @@ public:
 	 *
 	 * @return 
 	 */
-	Node *IntervalSearch(TYPE _x, TYPE *_y);
+	Node *IntervalSearch(TYPE _x, TYPE _y);
 private:
 	/**
 	 * @brief Fixup the max in the tree.
