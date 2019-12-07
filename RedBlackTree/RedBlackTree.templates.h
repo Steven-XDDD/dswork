@@ -35,7 +35,7 @@ int RedBlackTree<TYPE>::insert(Node *_new) {
 			y = x->parent->parent->left;
 			if(y->color == RED) {
 				y->color = BLACK;						//case1
-				x->parent-parent->color = RED;			//case1
+				x->parent->parent->color = RED;			//case1
 				x->parent->color = BLACK;				//case1
 				x = x->parent->parent;					//case1
 				if(x->parent->color == BLACK) {

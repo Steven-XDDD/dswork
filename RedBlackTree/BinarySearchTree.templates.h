@@ -1,7 +1,7 @@
 #include "BinarySearchTree.h"
 
 template <class TYPE>
-const typename BinarySearchTree<TYPE>::Node *BinarySearchTree<TYPE>::search(TYPE _d) {
+const typename BinarySearchTree<TYPE>::Node *BinarySearchTree<TYPE>::search(TYPE _d) const{
 	const Node *x = this->root;
 	while(x != this->nil && _d != x->data) {
 		if(_d < x->data) {
@@ -370,7 +370,7 @@ int BinarySearchTree<TYPE>::insert(Node *_new) {
 	else {
 		y->right = _new;
 	}
-	return 0
+	return 0;
 };
 
 template <class TYPE>
@@ -398,7 +398,7 @@ int BinarySearchTree<TYPE>::insert(TYPE _d) {
 	else {
 		y->right = z;
 	}
-	return 0
+	return 0;
 };
 
 template <class TYPE>
@@ -413,7 +413,7 @@ int BinarySearchTree<TYPE>::del(Node *_x) {
 		Node *y = min(_x->right);
 		if(y->parent != _x) {
 			this->transplant(y, y->right);
-			y->right = _x->rigth;
+			y->right = _x->right;
 			y->right->parent = y;
 		}
 		this->transplant(_x, y);

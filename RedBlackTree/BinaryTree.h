@@ -11,6 +11,7 @@
 
 
 #include <limits>
+#include <iomanip>
 #include <algorithm>
 #include <queue>
 #include <vector>
@@ -47,7 +48,7 @@ private:
 
 	inline int __make_both_branch(int _x) const;
 	
-	inline int __make_left_brach(int _x) const;
+	inline int __make_left_branch(int _x) const;
 
 	inline int __make_right_branch(int _x) const;
 

@@ -7,12 +7,12 @@ template <class TYPE>
 class RedBlackTree;
 
 template <class TYPE>
-class RedBlackTree : public BinarySearchtree<TYPE> {
+class RedBlackTree : public BinarySearchTree<TYPE> {
 public:
 	typedef typename BinarySearchTree<TYPE>::Node Node;
 
 	RedBlackTree(TYPE _val) : BinarySearchTree<TYPE>(_val) {
-		this->root->color = Black;
+		this->root->color = BLACK;
 	};
 
 	RedBlackTree(){};

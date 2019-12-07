@@ -16,7 +16,7 @@
 #define BLACK false
 #define RED true
 
-template <class type>
+template <class TYPE>
 class BinaryTreeNode
 {
 public:

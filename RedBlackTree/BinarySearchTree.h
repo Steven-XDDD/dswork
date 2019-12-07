@@ -45,13 +45,13 @@ public:
 
 	const Node *max() const;
 
-	TYPe max_value() cosnt;
+	TYPE max_value() const;
 
 	Node *max(Node *_x);
 
 	const Node *max(const Node *_x) const;
 	
-	TYPe max_value(const Node *_x) const;
+	TYPE max_value(const Node *_x) const;
 
 	Node *successor(Node *_x);
 

@@ -32,7 +32,7 @@ template<class TYPE>
 int BinaryTree<TYPE>::inorder_walk(const Node *_x)const {
 	if(_x != nil) {
 		inorder_walk(_x->left);
-		std::out << _x->data << " ";
+		std::cout << _x->data << " ";
 		inorder_walk(_x->right);
 	}
 	return 0;
@@ -40,7 +40,7 @@ int BinaryTree<TYPE>::inorder_walk(const Node *_x)const {
 
 template <class TYPE>
 int BinaryTree<TYPE>::release(Node *_x) {
-	if(_X != nil) {
+	if(_x != nil) {
 		release(_x->left);
 		release(_x->right);
 		delete _x;
@@ -58,7 +58,7 @@ int BinaryTree<TYPE>::release() {
 template <class TYPE>
 int BinaryTree<TYPE>::inorder_walk()const {
 	inorder_walk(root);
-	stD::cout << std::endl;
+	std::cout << std::endl;
 };
 
 template <class TYPE>
@@ -87,8 +87,8 @@ template <class TYPE>
 inline int BinaryTree<TYPE>::__make_space(int _x) const {
 	for(int i = 0; i != _x; i++) {
 		std::cout << " ";
-		return 0;
 	}
+	return 0;
 }
 
 template <class TYPE>
@@ -103,7 +103,7 @@ inline int BinaryTree<TYPE>::__make_both_branch(int _x) const{
 };
 
 template <class TYPE>
-inline int BinaryTree<TYPE>::__make_left_branch(int _x)const {
+inline int BinaryTree<TYPE>::__make_left_branch(int _x) const {
 	std::cout << "┌";
 	for(int i = 0; i < (_x-3)/2 ; i++)
 		std:: cout << "─";
@@ -140,7 +140,7 @@ int BinaryTree<TYPE>::display() {
 	std::queue<ChildCases> output_cc; /**< The children status of nodes outputing. */
 	std::queue<ChildCases> branch_cache; /**< Cache the branches between node and its children. */
 	std::queue<Node *> node_cache; /**< Cache th nodes for outputiong. */
-	if(__root != nil)
+	if(root != nil)
 		val.push(root);
 	else {
 		std::cout << "The tree is empty." << std::endl;
@@ -257,7 +257,7 @@ int BinaryTree<TYPE>::display() {
 };
 
 template <class TYPE>
-int BinaryTree<TYPE>::updateDepthandPos(BTNode *_x, int _d, int _p) {
+int BinaryTree<TYPE>::updateDepthandPos(Node *_x, int _d, int _p) {
 	if(_x != nil) {
 		_x->depth = _d;
 		_x->pos = _p;
@@ -274,7 +274,7 @@ int BinaryTree<TYPE>::updateDepthandPos() {
 };
 
 template <class TYPE>
-int BinaryTree<TYPE>::height(BTNode *_x) const {
+int BinaryTree<TYPE>::height(const Node *_x) const {
 	if(_x == nil)
 		return 0;
 	else 
@@ -282,7 +282,7 @@ int BinaryTree<TYPE>::height(BTNode *_x) const {
 };
 
 template <class TYPE>
-int BinaryTree::height() const {
+int BinaryTree<TYPE>::height() const {
 	return height(root);
 };
 
@@ -292,7 +292,7 @@ BinaryTree<TYPE>::~BinaryTree() {
 };
 
 template <class TYPE>
-int BinaryTree<TYPE>::insertleft(Node *_x, TYPE _val) {
+int BinaryTree<TYPE>::insertLeft(Node *_x, TYPE _val) {
 	if(_x == nil) {
 		std::cerr << "Error! The tree is empty." << std::endl;
 		return -1;
