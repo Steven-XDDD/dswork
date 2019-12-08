@@ -364,11 +364,11 @@ int BinarySearchTree<TYPE>::insert(Node *_new) {
 	if(y == this->nil) {
 		this->root = _new;
 	}
-	else if(_new->data < y->data) {
-		y->left = _new;
+	else if(_new->data > y->data) {
+		y->right = _new;
 	}
 	else {
-		y->right = _new;
+		y->left = _new;
 	}
 	return 0;
 };
@@ -392,11 +392,11 @@ int BinarySearchTree<TYPE>::insert(TYPE _d) {
 	if(y == this->nil) {
 		this->root = z;
 	}
-	else if(z->data < y->data) {
-		y->left = z;
+	else if(z->data > y->data) {
+		y->right = z;
 	}
 	else {
-		y->right = z;
+		y->left = z;
 	}
 	return 0;
 };

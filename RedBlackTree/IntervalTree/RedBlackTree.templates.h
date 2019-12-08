@@ -53,7 +53,7 @@ int RedBlackTree<TYPE>::insert(Node *_new) {
 			}
 		}
 	}
-	this->root->color == BLACK;
+	this->root->color = BLACK;
 	return 0;
 }; 
 

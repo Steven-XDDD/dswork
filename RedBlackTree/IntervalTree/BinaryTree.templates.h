@@ -87,7 +87,7 @@ int BinaryTree<TYPE>::transplant(Node *_u, Node *_v) {
 
 template <class TYPE>
 inline int BinaryTree<TYPE>::__make_space(int _x) const {
-	for(int i = 0; i != _x; i++) {
+	for(int i = 0; i < _x; i++) {
 		std::cout << " ";
 	}
 	return 0;
@@ -135,6 +135,7 @@ inline int BinaryTree<TYPE>::__pow2(int _x) const {
 template <class TYPE>
 int BinaryTree<TYPE>::display() {
 	updateDepthandPos();
+	std::queue<Node *> max_output;
 	std::queue<Node *> val; /**< For breadth-first tree walk. */
 	std::queue<Node *> output;      /**< For print tree. */
 	///Children status for a node.
@@ -189,27 +190,31 @@ int BinaryTree<TYPE>::display() {
 	int off = 0;       /**< Offset of the position to display a node. */
 	///In this loop, we actually print the tree by using std::cout.
 	///With the branches between nodes and their children.
+	int max_off = 0;
 	while(!output.empty()) {
 		Node *next = output.front();
+		max_output.push(next);
 		output.pop();
 		///Fill the missing nodes.
 		while(off < next->pos) {
-			__make_space(__pow2(h - next->depth + 1));
+			__make_space(__pow2(h - next->depth + 2));
 			off++;
 		}
 		///Offset for centrally print every node.
-		__make_space(__pow2(h - next->depth) - 2);
+		__make_space(__pow2(h - next->depth + 1) - 4);
 		if(next->color == RED) {
 			std::cout << RC;
-			std::cout << std::setw(3) << std::left << next->data;
+			std::cout << std::setw(3) << std::left << next->low; 
+			std::cout << std::setw(3) << next->high;
 			std::cout << RESET;
 		}
 		else {
 			std::cout << WC;
-			std::cout << std::setw(3) << std::left << next->data;
+			std::cout << std::setw(3) << std::left << next->low; 
+			std::cout << std::setw(3) << next->high;
 			std::cout << RESET;
 		}
-		__make_space(__pow2(h - next->depth) - 1);
+		__make_space(__pow2(h - next->depth + 1) - 2);
 		count++;
 		off++;
 		///Recourd the printed node, the children status of these
@@ -221,6 +226,32 @@ int BinaryTree<TYPE>::display() {
 		/// in the next we should print out an enter to start a newline for branches.
 		///And the second condition says if we are in the last layer, we
 		///don't do it.
+		if(count == counter[next->depth] && next->depth != h) {
+			std::cout << std::endl;
+			while(!max_output.empty()) {
+				Node *max_next = max_output.front();
+				max_output.pop();
+				while(max_off < max_next->pos) {
+					__make_space(__pow2(h - next->depth + 2));
+					max_off++;
+				}
+				///Offset for centrally print every node.
+				__make_space(__pow2(h - next->depth + 1) - 4);
+				if(max_next->color == RED) {
+					std::cout << RC;
+					std::cout << std::setw(6) << std::left << max_next->max; 
+					std::cout << RESET;
+				}
+				else {
+					std::cout << WC;
+					std::cout << std::setw(6) << std::left << max_next->max;
+					std::cout << RESET;
+				}
+				__make_space(__pow2(h - next->depth + 1) - 2);
+				max_off++;
+				}
+				max_off = 0;
+		}
 		if(count == counter[next->depth] && next->depth != h - 1) {
 			count = 0;
 			off = 0;
@@ -232,22 +263,22 @@ int BinaryTree<TYPE>::display() {
 				node_cache.pop();
 				///Again, we need compute the offset for the branches of those missing nodes.
 			while(off < next->pos) {
-				__make_space(__pow2(h - next->depth + 1));
+				__make_space(__pow2(h - next->depth + 2));
 				off++;
 			}
 			/// The offset for centrally print.
-			__make_space(__pow2(h - next->depth - 1) - 2 );
+			__make_space(__pow2(h - next->depth) - 4);
 			///Pick the different type of the branches.
 			if(cc == BOTH)
-				__make_both_branch(__pow2(h - next->depth) + 1);
+				__make_both_branch(__pow2(h - next->depth + 1) + 2);
 			else if(cc == LEFT)
-				__make_left_branch(__pow2(h - next->depth) + 1);
+				__make_left_branch(__pow2(h - next->depth + 1) + 2);
 			else if(cc == RIGHT)
-				__make_right_branch(__pow2(h - next->depth) + 1);
+				__make_right_branch(__pow2(h - next->depth + 1) + 2);
 			else if(cc == NONE)
-				__make_space(__pow2(h - next->depth) + 1);
-			__make_space(__pow2(h - next->depth - 1) - 2);
-			std::cout << "   ";
+				__make_space(__pow2(h - next->depth + 1) + 1);
+			__make_space(__pow2(h - next->depth) - 3);
+			std::cout << "      ";
 			off++;
 			}
 			off = 0;

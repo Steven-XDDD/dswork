@@ -138,7 +138,7 @@ int IntervalTree<TYPE>::insert(Node *_new) {
 		}
 	}
 	__IT_Max_Fixup(x);
-	this->root->color == BLACK;
+	this->root->color = BLACK;
 	return 0;
 }; 
 
