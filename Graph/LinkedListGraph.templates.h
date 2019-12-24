@@ -1,10 +1,5 @@
 #include "LinkedListGraph.h"
 
-/*template <class TYPE>
-bool vertex<TYPE>::comp(const vertex<TYPE> &_a, const vertex<TYPE> &_b) {
-	return _a.d > _b.d;
-}; */
-
 template <class TYPE>
 int LinkedListGraph<TYPE>::V_insert(TYPE _d) {
 	this->length = this->length + 1;
@@ -105,7 +100,8 @@ int LinkedListGraph<TYPE>::fix_Vd(int _a, int _d) {
 		std::cerr << "there is no such vertex" << std::endl;
 		std::exit(-1);
 	}
-	__V[_a - 1].d = _d;
+	typename std::vector<vertex<TYPE> >::iterator itr = __V.begin();
+	(*(itr + _a - 1)).d = _d; 
 	return 0;
 };
 
@@ -115,7 +111,8 @@ int LinkedListGraph<TYPE>::fix_Vpi(int _a, int _pi) {
 		std::cerr << "there is no such vertex" << std::endl;
 		std::exit(-1);
 	}
-	__V[_a - 1].pi = _pi;
+	typename std::vector<vertex<TYPE> >::iterator itr = __V.begin();
+	(*(itr + _a - 1)).pi = _pi; 
 	return 0;
 };
 
@@ -125,6 +122,7 @@ int LinkedListGraph<TYPE>::fix_Vq(int _a, int _q) {
 		std::cerr << "there is no such vertex" << std::endl;
 		std::exit(-1);
 	}
-	__V[_a - 1].q = _q;
+	typename std::vector<vertex<TYPE> >::iterator itr = __V.begin();
+	(*(itr + _a - 1)).q = _q; 
 	return 0;
 };
